@@ -1,0 +1,6 @@
+<form action="/update">
+	<input type="hidden" name="id" value="<%= @book.id %>">
+<input type="text" name="na" value="<%=@book.name%>">
+<textarea name="content"><%=@book.content%></textarea>
+<input type="submit">
+</form>

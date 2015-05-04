@@ -1,0 +1,27 @@
+<h1>Hello, world!</h1>
+<p>방명록을 남겨주세요</p>
+<form action ="/write">
+	<input type ="text" name="na" placeholder="name"><br>
+	<textarea name="content"></textarea>
+	<input type="submit">
+</form>
+<ol>
+	<% @books.each do |b| %>
+		<li>
+			b.name : b.content
+		    <%=b.name%> : <%=b.content%>
+		    <a href="/delete?id=<%=b.id%>">삭제</a>
+		    <a href="/modify?id=<%=b.id%>">수정</a>
+		    <form action="/comment/new">
+		    	<input type ="hidden" name="book_id" value="<%=b.id%>">
+		    	<input type="text" name="comment" placeholder="댓글을 입력하세요">
+		    	<input type="submit">
+		    </form>
+		    <ul>
+		    	<% b.comments.each do |c| %>
+		    	 <li><%=c.message%>, <%=c.created_at%></li>
+		    	<% end %>
+		    </ul>
+		   </li>
+	<% end %>
+</ol>
